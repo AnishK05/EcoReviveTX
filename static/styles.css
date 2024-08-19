@@ -1,0 +1,230 @@
+/* General Body Styling */
+
+body, .input-row, .head-logo, .title, .introduction, form, .graphs, .graph-container img {
+    animation: fadeIn 2s ease-in-out;
+}
+
+body {
+    font-family: 'Times New Roman', serif;
+    color: #333;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+@keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+}
+
+.head-logo {
+    width: 20%; 
+    height: auto;
+    margin-bottom: 0.5%; 
+    margin-top: 4%;
+    margin-left: 2%;
+}
+
+.title {
+    margin-left: 2%;
+}
+
+.introduction {
+    margin-left: 2%;
+    margin-bottom: 1%;
+    font-weight: normal;
+    max-width: 90%;
+}
+
+.pop-out-info {
+    margin-left: 2%;
+    font-size: 1.2rem;
+    color: #8e4739;
+
+    &:hover {
+        color: #bc8c6c;
+        cursor: pointer;
+        text-decoration: underline;
+    }
+}
+
+
+/* Flexbox Styling for Input Row */
+.input-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+/* Form Styling */
+form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 80%;
+    margin: auto;
+}
+
+/* Input Styling */
+input[type="text"],
+input[type="number"],
+select {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+/* Button Styling */
+button {
+    background-color: #8e4739;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+button:hover {
+    background-color: #bc8c6c;
+}
+
+.output-container {
+    margin-left: 9.5%;
+}
+
+/* Graphs Section Styling */
+.graphs {
+    margin: 40px auto;
+    text-align: center;
+    margin-top: 30px;
+    padding: 20px;
+}
+
+.graphs img {
+    max-width: 100%;
+    margin: 10px;
+    border-radius: 8px;
+}
+
+.graph-text {
+    font-weight: normal;
+    max-width: 90%;
+    margin: auto;
+}
+
+a {
+    color: #8e4739;
+}
+
+a:hover {
+    color: blue;
+}
+
+/* Styling for See Key button */
+#see-key-button {
+    background-color: #8e4739; /* Dark green */
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    margin: 20px 0;
+}
+
+#see-key-button:hover {
+    background-color: #bc8c6c; /* Darker green */
+}
+
+/* Styling for Key Text */
+#key-text {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-size: 1em;
+    line-height: 1.6;
+}
+
+.graph-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.graph-container img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Modal Background */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    padding-top: 60px;
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto; /* 5% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    border-radius: 8px;
+}
+
+/* Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* For screens smaller than 2000px; 96px = 1 inch */
+@media (max-width: 1999px) {
+    .graph-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* For screens smaller than 1200px */
+@media (max-width: 1200px) {
+    .head-logo {
+        width: 40%; 
+    }
+    .graph-container {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}

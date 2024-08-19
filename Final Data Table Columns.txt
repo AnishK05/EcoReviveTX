@@ -1,0 +1,13 @@
+MAT: Mean Annual Temperature in °C.
+MAP: Mean Annual Precipitation in mm.
+SOC: Soil Organic Carbon, a measure of the carbon stored in soil.
+TN: Soil Total Nitrogen, indicating the amount of nitrogen in the soil.
+TP: Soil Total Phosphorus, representing the phosphorus content in the soil.
+AN: Available Nitrogen in the soil, which plants can easily absorb.
+AP: Available xPhosphorus in the soil, readily available for plant uptake.
+MBC: Microbial Biomass Carbon, indicating the amount of carbon in soil microorganisms.
+MBN: Microbial Biomass Nitrogen, representing the nitrogen in soil microorganisms.
+MBP: Microbial Biomass Phosphorus, indicating the phosphorus content in soil microorganisms.
+Invertase, Urease, Catalase, Phosphatase: Soil enzyme activities that contribute to nutrient cycling.
+
+lnRR: Natural logarithm of the Response Ratio, often used in ecological studies to measure relative changes.

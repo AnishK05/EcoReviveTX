@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecological Restoration Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+    <img src="static/ecorevivetx-high-resolution-logo.png" alt="EcoReviveTX Logo" class="head-logo">
+    <h1 class="title">EcoReviveTX: Ecological Restoration Analysis Tool</h1>
+    <h3 class="introduction">Welcome to EcoReviveTX! Our platform is dedicated to supporting ecological restoration efforts across Texas by providing cutting-edge tools for data analysis, simulation, and prediction. Designed for conservationists, park rangers, and environmental professionals, EcoReviveTX leverages the power of machine learning, advanced statistical analysis, and robust ecological simulations to help you make informed, data-driven decisions. By integrating these advanced technologies, EcoReviveTX empowers you to optimize restoration strategies, accelerate ecosystem recovery, and contribute to the sustainable management of Texas's natural landscapes.</h3>
+
+    <h4 class="pop-out-info">How It Works?</h4>
+
+    <!-- Prediction Section -->
+    <form id="prediction-form">
+        <h2>Prediction Inputs</h2>
+        <div class="input-row">
+            <input type="text" name="latitude" placeholder="Latitude" required>
+            <input type="text" name="longitude" placeholder="Longitude" required>
+            <input type="text" name="mat" placeholder="MAT (°C)" required>
+            <input type="text" name="map" placeholder="MAP (mm)" required>
+            <input type="text" name="soil_depth" placeholder="Soil Depth (cm)" required>
+            <input type="text" name="ambient_soc" placeholder="Ambient SOC (g/kg)" required>
+
+            <select name="climate" required>
+                <option value="" disabled selected>Select Climate</option>
+                <option value="subtropical">Subtropical</option>
+                <option value="temperate">Temperate</option>
+            </select>
+
+            <select name="ecosystem" required>
+                <option value="" disabled selected>Select Ecosystem</option>
+                <option value="forest">Forest</option>
+                <option value="non_forest">Non-Forest</option>
+            </select>
+
+            <select name="prediction_type" required>
+                <option value="" disabled selected>Select Prediction Type</option>
+                <option value="time">Restoration Time (in years)</option>
+                <option value="lnrr_soc">lnRR.SOC</option>
+            </select>
+
+            <button type="submit">Predict</button>
+        </div>
+    </form>
+
+    <div id="prediction-result" class="output-container">
+        <h3>Prediction Result:</h3>
+        <h3>{{ prediction }}</h3>
+    </div>
+
+    <!-- Simulation Section -->
+    <form id="simulation-form">
+        <h2>Simulation Inputs</h2>
+        <div class="input-row">
+            <input type="text" name="mat" placeholder="MAT (°C)" required>
+            <input type="text" name="map" placeholder="MAP (mm)" required>
+            <input type="text" name="soil_depth" placeholder="Soil Depth (cm)" required>
+
+            <select name="climate" required>
+                <option value="" disabled selected>Select Climate</option>
+                <option value="subtropical">Subtropical</option>
+                <option value="temperate">Temperate</option>
+            </select>
+
+            <select name="ecosystem" required>
+                <option value="" disabled selected>Select Ecosystem</option>
+                <option value="forest">Forest</option>
+                <option value="non_forest">Non-Forest</option>
+            </select>
+
+            <select name="simulation_type" required>
+                <option value="" disabled selected>Select Simulation Type</option>
+                <option value="basic">Basic Simulation</option>
+                <option value="monte_carlo">Monte Carlo Simulation</option>
+            </select>
+
+            <button type="submit">Simulate</button>
+        </div>
+    </form>
+
+    <div id="simulation-result" class="output-container">
+        <h3>Simulation Result:</h3>
+        <h3>{{ simulation_result }}</h3>
+    </div>
+
+    <div class="graphs">
+        <h2 class="graph-title">Graphs</h2>
+        <h3 class="graph-text">
+            The graphs presented here are derived from a comprehensive dataset adapted from a study published by 
+            <a href="https://datadryad.org/stash/dataset/doi:10.5061/dryad.msbcc2g0g" target="_blank">Wang et al. (2020)</a>, 
+            which explores the impact of ecological restoration on soil organic carbon and nutrient dynamics. This dataset, originally focused on restoration efforts in China, has been meticulously refined and reanalyzed to reflect conditions specific to Texas ecosystems. By leveraging this data, we provide visual insights into key ecological metrics such as soil nutrient levels, enzyme activities, and overall restoration progress over time. These visualizations serve as a valuable resource for understanding the complex interactions between restoration practices and soil health, aiding in the development of effective strategies for ecosystem recovery.
+        </h3>
+        
+        <!-- See Key Section -->
+        <button id="see-key-button">View Key</button>
+        <div id="key-text" style="display: none;">
+            <p>
+                MAT: Mean Annual Temperature in °C.<br>
+                MAP: Mean Annual Precipitation in mm.<br>
+                SOC: Soil Organic Carbon, a measure of the carbon stored in soil.<br>
+                TN: Soil Total Nitrogen, indicating the amount of nitrogen in the soil.<br>
+                TP: Soil Total Phosphorus, representing the phosphorus content in the soil.<br>
+                AN: Available Nitrogen in the soil, which plants can easily absorb.<br>
+                AP: Available Phosphorus in the soil, readily available for plant uptake.<br>
+                MBC: Microbial Biomass Carbon, indicating the amount of carbon in soil microorganisms.<br>
+                MBN: Microbial Biomass Nitrogen, representing the nitrogen in soil microorganisms.<br>
+                MBP: Microbial Biomass Phosphorus, indicating the phosphorus content in soil microorganisms.<br>
+                Invertase, Urease, Catalase, Phosphatase: Soil enzyme activities that contribute to nutrient cycling.<br>
+                lnRR: Natural logarithm of the Response Ratio, often used in ecological studies to measure relative changes.
+            </p>
+        </div>
+
+        <div class="graph-container">
+            <img src="static/1.Graph.png" alt="Graph 1">
+            <img src="static/2.Graph.png" alt="Graph 2">
+            <img src="static/3.Graph.png" alt="Graph 3">
+            <img src="static/4.Graph.png" alt="Graph 4">
+            <img src="static/5.Graph.png" alt="Graph 5">
+            <img src="static/6.Graph.png" alt="Graph 6">
+            <img src="static/7.Graph.png" alt="Graph 7">
+            <img src="static/8.Graph.png" alt="Graph 8">
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            // Handle prediction form submission
+            $('#prediction-form').submit(function(event) {
+                event.preventDefault();
+                $.ajax({
+                    url: '/predict',
+                    type: 'POST',
+                    data: $(this).serialize(),
+                    success: function(response) {
+                        $('#prediction-result').html('<h3>Prediction Result:</h3>' + response.prediction + '</p>');
+                    }
+                });
+            });
+
+            // Handle simulation form submission
+            $('#simulation-form').submit(function(event) {
+                event.preventDefault();
+                $.ajax({
+                    url: '/simulate',
+                    type: 'POST',
+                    data: $(this).serialize(),
+                    success: function(response) {
+                        $('#simulation-result').html('<h3>Simulation Result:</h3>' + response.simulation_result + '</p>');
+                    }
+                });
+            });
+
+            $('#see-key-button').click(function() {
+                $('#key-text').toggle();
+                $(this).text(function(i, text) {
+                    return text === "View Key" ? "Hide Key" : "View Key";
+                });
+            });
+
+            var modal = document.getElementById("howItWorksModal"); // Get the modal
+            var btn = document.querySelector(".pop-out-info"); // Get the button that opens the modal
+            var span = document.getElementsByClassName("close")[0]; // Get the <span> element that closes the modal
+            btn.onclick = function() { // When the user clicks the button, open the modal 
+                modal.style.display = "block";
+            }
+            span.onclick = function() {  // When the user clicks on <span> (x), close the modal
+                modal.style.display = "none";
+            }
+            window.onclick = function(event) { // When the user clicks anywhere outside of the modal, close it
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+        });
+    </script>
+
+    <!-- Modal Structure -->
+    <div id="howItWorksModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>How to Use EcoReviveTX:</h2>
+            <p><strong>Prediction Tool:</strong> Our machine learning models allow you to predict restoration timelines and key soil health metrics. Simply input data such as latitude, longitude, mean annual temperature (MAT), mean annual precipitation (MAP), soil depth, and ambient soil organic carbon (SOC). With a click of a button, you’ll receive predictions for the expected restoration time and changes in soil health, enabling you to plan and adjust your strategies with precision.</p>
+            <p><strong>Simulation Tool:</strong> EcoReviveTX also offers powerful simulations based on environmental factors. By entering data related to MAT, MAP, soil depth, climate type, and ecosystem type, our C-based simulations provide accurate forecasts of restoration outcomes. You can simulate different scenarios to evaluate how changes in these factors might impact your restoration project over time.</p>
+            <p>In addition to these tools, our platform includes MATLAB-driven data visualizations that offer clear insights into critical environmental variables, helping you monitor progress and identify trends.</p>
+        </div>
+    </div>
+
+</body>
+</html>
