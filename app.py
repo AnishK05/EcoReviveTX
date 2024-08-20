@@ -60,9 +60,9 @@ def simulate():
 
         if simulation_type:
             if simulation_type == "basic":
-                simulation_result = run_c_simulation('C simulations/basic_ecosystem_modeling.exe', mat, map_, soil_depth, climate, ecosystem)
+                simulation_result = run_c_simulation('./C simulations/basic_ecosystem_modeling.exe', mat, map_, soil_depth, climate, ecosystem)
             elif simulation_type == "monte_carlo":
-                simulation_result = run_c_simulation('C simulations/monte_carlo_ecosystem_modeling.exe', mat, map_, soil_depth, climate, ecosystem)
+                simulation_result = run_c_simulation('./C simulations/monte_carlo_ecosystem_modeling.exe', mat, map_, soil_depth, climate, ecosystem)
         else:
             simulation_result = "No simulation type selected."
 
