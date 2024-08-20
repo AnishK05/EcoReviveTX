@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, jsonify
 import joblib
 import subprocess
+import os
 
 app = Flask(__name__)
 
@@ -60,9 +61,14 @@ def simulate():
 
         if simulation_type:
             if simulation_type == "basic":
-                simulation_result = run_c_simulation('C_simulations/basic_ecosystem_modeling.exe', mat, map_, soil_depth, climate, ecosystem)
+                c_file = 'C_simulations/basic_ecosystem_modeling.c'
             elif simulation_type == "monte_carlo":
-                simulation_result = run_c_simulation('C_simulations/monte_carlo_ecosystem_modeling.exe', mat, map_, soil_depth, climate, ecosystem)
+                c_file = 'C_simulations/monte_carlo_ecosystem_modeling.c'
+            else:
+                return jsonify({"error": "Invalid simulation type selected."})
+            
+            # Compile the C file and run the simulation
+            simulation_result = compile_and_run_c_simulation(c_file, mat, map_, soil_depth, climate, ecosystem)
         else:
             simulation_result = "No simulation type selected."
 
@@ -70,9 +76,18 @@ def simulate():
     except Exception as e:
         return jsonify({"error": str(e)})
 
-def run_c_simulation(executable, mat, map_, soil_depth, climate, ecosystem):
-    """Run a C simulation executable with user inputs."""
+def compile_and_run_c_simulation(c_file, mat, map_, soil_depth, climate, ecosystem):
+    """Compile and run a C simulation source file with user inputs."""
     try:
+        # Compile the C file
+        executable = c_file.replace('.c', '.out')
+        compile_command = f"gcc {c_file} -o {executable}"
+        compile_process = subprocess.run(compile_command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+
+        if compile_process.returncode != 0:
+            return f"Compilation error: {compile_process.stderr.decode('utf-8')}"
+        
+        # Run the compiled binary
         process = subprocess.Popen(
             [executable, str(mat), str(map_), str(soil_depth), climate, ecosystem],
             stdout=subprocess.PIPE, stderr=subprocess.PIPE
@@ -80,7 +95,8 @@ def run_c_simulation(executable, mat, map_, soil_depth, climate, ecosystem):
         stdout, stderr = process.communicate()
 
         if process.returncode != 0:
-            return f"Error: {stderr.decode('utf-8')}"
+            return f"Execution error: {stderr.decode('utf-8')}"
+        
         return stdout.decode('utf-8')
     except Exception as e:
         return f"Simulation error: {str(e)}"
