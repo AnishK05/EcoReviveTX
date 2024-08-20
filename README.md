@@ -1,1 +1,3 @@
-![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=AnishK05&size_weight=0.5&count_weight=0.5)
+# EcoReviveTX
+
+![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=AnishK05&size_weight=0.25&count_weight=0.75)
