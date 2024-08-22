@@ -6,7 +6,7 @@
 
 Explore the website [here](https://ecorevivetx.onrender.com/)
 
-![EcoReviveTXScreenshot](static/EcoReviveTXScreenshot.png)
+![EcoReviveTXScreenshot](static/ecorevivetxscreenshot.png)
 
 ## Technologies Used
 
