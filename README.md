@@ -24,5 +24,3 @@ Explore the website [here](https://ecorevivetx.onrender.com/)
 * **MATLAB-Driven Data Visualizations:** Offers clear insights into critical environmental variables, helping users monitor progress and identify trends in ecological restoration projects. The visualizations are based on data refined and reanalyzed from a study originally focused on China, adapted for Texas ecosystems.
 * **Interactive Forms:** The platform features user-friendly forms for both predictions and simulations. These forms allow users to input relevant data and receive immediate feedback on their restoration projects.
 * **Dynamic Content:**  AJAX for real-time updates and interactions within the platform. Includes a modal with detailed instructions on how to use the platform, enhancing user experience by providing context-specific guidance.
-
-![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=AnishK05&size_weight=0&count_weight=1&langs_count=8)
