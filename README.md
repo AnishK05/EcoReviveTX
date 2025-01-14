@@ -12,8 +12,8 @@ EcoReviveTX offers a suite of tools designed to streamline ecological restoratio
 
 ## Technologies Used
 
-* **Front-End:** JavasScript (jQuery), HTML, CSS
-* **Back-End:** Flask (Python), RESTful APIs
+* **Front-End:** JavaScript (jQuery), HTML, CSS
+* **Back-End:** Flask, RESTful APIs
 * **Machine Learning:** Python
 * **Ecosystem Modeling:** C
 * **Data Visualization:** MATLAB
