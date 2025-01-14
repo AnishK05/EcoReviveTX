@@ -6,8 +6,6 @@
 
 Explore the website [here](https://ecorevivetx.onrender.com/)
 
-EcoReviveTX offers a suite of tools designed to streamline ecological restoration efforts through precise modeling and data analysis. The Prediction Tool leverages machine learning to process inputs such as soil organic carbon levels, precipitation, and temperature, providing actionable forecasts on restoration timelines and soil health metrics. Complementing this is the Simulation Tool, which uses C-based models and Monte Carlo simulations to explore a range of environmental scenarios, enabling users to evaluate the effects of variables like climate type and ecosystem conditions. MATLAB visualizations further enhance the platform by presenting restoration trends and key metrics in accessible formats, aiding in monitoring and decision-making. The front-end is built with jQuery, ensuring a responsive and visually appealing user interface. The back-end utilizes Flask to manage simulations, machine learning models, and scalable API services.
-
 ![EcoReviveTXScreenshot](static/ecorevivetxscreenshot.png)
 
 ## Technologies Used
