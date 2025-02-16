@@ -2,6 +2,8 @@
 
 ## Overview
 
+This website is currently being re-branded.
+
 **EcoReviveTX** is a full-stack web application designed to support ecological restoration efforts in Texas. It leverages AI & machine learning, statistical analysis, data visualization with MATLAB, and C-based simulations to provide actionable insights for park rangers and environmental professionals. The platform offers tools for predicting restoration timelines and soil health metrics, as well as for simulating various environmental scenarios. By integrating these technologies, EcoReviveTX aids in accelerating ecosystem recovery and managing Texas's natural landscapes more sustainably. The platform utilizes a modern tech stack, including jQuery, Flask, C, MATLAB, and machine learning (Python), to create a powerful tool for ecological restoration. Currently in efforts to collaborate with the Texas Parks and Wildlife Department.
 
 Explore the website [here](https://ecorevivetx.onrender.com/)
