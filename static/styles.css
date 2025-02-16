@@ -35,6 +35,13 @@ body {
     margin-left: 2%;
 }
 
+.warning {
+    margin-left: 2%;
+    margin-bottom: 1%;
+    font-weight: bold;
+    color: red;
+}
+
 .introduction {
     margin-left: 2%;
     margin-bottom: 1%;
