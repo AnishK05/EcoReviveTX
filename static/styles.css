@@ -23,42 +23,39 @@ body {
     }
 }
 
+.header-container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
 .head-logo {
-    width: 20%; 
+    width: 150px; 
     height: auto;
-    margin-bottom: 0.5%; 
-    margin-top: 4%;
-    margin-left: 2%;
+    margin-bottom: 10px;
 }
 
 .title {
-    margin-left: 2%;
-}
-
-.warning {
-    margin-left: 2%;
-    margin-bottom: 1%;
-    font-weight: bold;
-    color: red;
+    font-size: 1.6em;
+    margin: 10px 0;
 }
 
 .introduction {
-    margin-left: 2%;
-    margin-bottom: 1%;
+    font-size: 0.95em;
+    margin-bottom: 10px;
     font-weight: normal;
-    max-width: 90%;
+    color: #333;
+    line-height: 1.5;
 }
 
-.pop-out-info {
-    margin-left: 2%;
-    font-size: 1.2rem;
+a {
     color: #8e4739;
+    text-decoration: none;
+}
 
-    &:hover {
-        color: #bc8c6c;
-        cursor: pointer;
-        text-decoration: underline;
-    }
+a:hover {
+    color: #6b3529;
+    text-decoration: underline;
 }
 
 
@@ -66,172 +63,175 @@ body {
 .input-row {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
-    align-items: center;
-    justify-content: center;
+    gap: 20px;
     margin-bottom: 20px;
 }
 
+.input-wrapper {
+    flex: 1;
+    min-width: 180px;
+    max-width: calc(25% - 15px);
+    display: flex;
+    flex-direction: column;
+}
+
+.input-wrapper.full-width {
+    flex: 100%;
+    max-width: 100%;
+}
+
+.input-wrapper label {
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #000;
+    font-size: 0.85em;
+}
+
 /* Form Styling */
-form {
+.tool-section {
     background-color: #fff;
-    padding: 20px;
+    padding: 30px;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    max-width: 80%;
-    margin: auto;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
+.tool-section h2 {
+    color: #8e4739;
+    margin: 0 0 10px 0;
+    font-size: 1.4em;
+    font-weight: bold;
+}
+
+.tool-description {
+    color: #555;
+    font-size: 0.95em;
+    line-height: 1.6;
+    margin-bottom: 25px;
 }
 
 /* Input Styling */
 input[type="text"],
 input[type="number"],
 select {
-    flex: 1;
-    padding: 10px;
+    width: 100%;
+    padding: 10px 12px;
     border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 1em;
+    border-radius: 6px;
+    font-size: 0.9em;
+    transition: all 0.3s ease;
+    background-color: #fafafa;
+    color: #333;
+    box-sizing: border-box;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+select:focus {
+    outline: none;
+    border-color: #8e4739;
+    background-color: #fff;
+    box-shadow: 0 0 0 3px rgba(142, 71, 57, 0.1);
 }
 
 /* Button Styling */
 button {
     background-color: #8e4739;
     color: #fff;
-    padding: 10px 20px;
+    padding: 8px 16px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 1em;
+    font-size: 0.9em;
+    transition: background-color 0.3s;
 }
 
 button:hover {
     background-color: #bc8c6c;
 }
 
-.output-container {
-    margin-left: 9.5%;
-}
-
-/* Graphs Section Styling */
-.graphs {
-    margin: 40px auto;
-    text-align: center;
-    margin-top: 30px;
-    padding: 20px;
-}
-
-.graphs img {
-    max-width: 100%;
-    margin: 10px;
-    border-radius: 8px;
-}
-
-.graph-text {
-    font-weight: normal;
-    max-width: 90%;
-    margin: auto;
-}
-
-a {
-    color: #8e4739;
-}
-
-a:hover {
-    color: blue;
-}
-
-/* Styling for See Key button */
-#see-key-button {
-    background-color: #8e4739; /* Dark green */
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 1em;
-    margin: 20px 0;
-}
-
-#see-key-button:hover {
-    background-color: #bc8c6c; /* Darker green */
-}
-
-/* Styling for Key Text */
-#key-text {
-    background-color: #f9f9f9;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    font-size: 1em;
-    line-height: 1.6;
-}
-
-.graph-container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-}
-
-.graph-container img {
+.submit-btn {
     width: 100%;
-    height: auto;
+    padding: 12px;
+    font-size: 1em;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.output-container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 25px;
+    background-color: #f0f8f0;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
-/* Modal Background */
-.modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    padding-top: 60px;
-}
-
-/* Modal Content */
-.modal-content {
-    background-color: #fefefe;
-    margin: 5% auto; /* 5% from the top and centered */
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
-    border-radius: 8px;
-}
-
-/* Close Button */
-.close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
+.output-container h3 {
+    color: #8e4739;
+    margin: 0 0 10px 0;
+    font-size: 1.1em;
     font-weight: bold;
 }
 
-.close:hover,
-.close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
+.result-content {
+    font-size: 0.95em;
+    color: #000;
 }
 
-/* For screens smaller than 2000px; 96px = 1 inch */
-@media (max-width: 1999px) {
-    .graph-container {
-        grid-template-columns: repeat(2, 1fr);
+.result-value {
+    font-weight: bold;
+    color: #2c5f2d;
+    font-size: 1.1em;
+    margin: 5px 0;
+}
+
+.loading {
+    color: #444;
+    font-style: italic;
+}
+
+.error {
+    color: #d32f2f;
+    font-weight: bold;
+}
+
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header-container {
+        padding: 0 15px;
     }
-}
 
-/* For screens smaller than 1200px */
-@media (max-width: 1200px) {
     .head-logo {
-        width: 40%; 
+        width: 120px;
     }
-    .graph-container {
-        grid-template-columns: repeat(1, 1fr);
+    
+    .title {
+        font-size: 1.3em;
+    }
+    
+    .introduction {
+        font-size: 0.9em;
+    }
+    
+    .input-wrapper {
+        min-width: 100%;
+    }
+    
+    .tool-section,
+    .output-container {
+        padding: 15px;
+        margin: 15px auto;
+    }
+
+    .tool-section h2 {
+        font-size: 1.2em;
+    }
+
+    .form-section h3 {
+        font-size: 0.95em;
     }
 }

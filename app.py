@@ -77,27 +77,35 @@ def simulate():
         return jsonify({"error": str(e)})
 
 def compile_and_run_c_simulation(c_file, mat, map_, soil_depth, climate, ecosystem):
-    """Compile and run a C simulation source file with user inputs."""
+    """Run a pre-compiled C simulation executable with user inputs."""
     try:
-        # Compile the C file
+        # Use the pre-existing .out file
         executable = c_file.replace('.c', '.out')
-        compile_command = f"gcc {c_file} -o {executable}"
-        compile_process = subprocess.run(compile_command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-
-        if compile_process.returncode != 0:
-            return f"Compilation error: {compile_process.stderr.decode('utf-8')}"
         
-        # Run the compiled binary
+        # Check if the executable exists
+        if not os.path.exists(executable):
+            return f"Error: Simulation executable not found at {executable}"
+        
+        # Convert to absolute path for Windows
+        abs_executable = os.path.abspath(executable)
+        
+        # Run the compiled binary with the provided parameters
         process = subprocess.Popen(
-            [executable, str(mat), str(map_), str(soil_depth), climate, ecosystem],
-            stdout=subprocess.PIPE, stderr=subprocess.PIPE
+            [abs_executable, str(mat), str(map_), str(soil_depth), climate, ecosystem],
+            stdout=subprocess.PIPE, 
+            stderr=subprocess.PIPE,
+            text=True,
+            cwd=os.path.dirname(abs_executable)
         )
-        stdout, stderr = process.communicate()
+        stdout, stderr = process.communicate(timeout=30)  # 30 second timeout
 
         if process.returncode != 0:
-            return f"Execution error: {stderr.decode('utf-8')}"
+            return f"Execution error: {stderr if stderr else 'Unknown error'}"
         
-        return stdout.decode('utf-8')
+        return stdout if stdout else "Simulation completed successfully (no output generated)"
+    except subprocess.TimeoutExpired:
+        process.kill()
+        return "Simulation timed out. Please try with different parameters."
     except Exception as e:
         return f"Simulation error: {str(e)}"
 
