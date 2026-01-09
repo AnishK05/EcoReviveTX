@@ -7,14 +7,14 @@ app = Flask(__name__)
 
 # Load machine learning models
 models = {
-    "subtropical_forest_time": joblib.load(open('selected_models/subtropical_forest_time.pkl', 'rb')),
-    "subtropical_forest_lnrr_soc": joblib.load(open('selected_models/subtropical_forest_lnrr_soc.pkl', 'rb')),
-    "subtropical_non_forest_time": joblib.load(open('selected_models/subtropical_non_forest_time.pkl', 'rb')),
-    "subtropical_non_forest_lnrr_soc": joblib.load(open('selected_models/subtropical_non_forest_lnrr_soc.pkl', 'rb')),
-    "temperate_forest_time": joblib.load(open('selected_models/temperate_forest_time.pkl', 'rb')),
-    "temperate_forest_lnrr_soc": joblib.load(open('selected_models/temperate_forest_lnrr_soc.pkl', 'rb')),
-    "temperate_non_forest_time": joblib.load(open('selected_models/temperate_non_forest_time.pkl', 'rb')),
-    "temperate_non_forest_lnrr_soc": joblib.load(open('selected_models/temperate_non_forest_lnrr_soc.pkl', 'rb')),
+    "subtropical_forest_time": joblib.load(open('selected_models/best_model_Restoration_time_years_Subtropical_Forest.pkl', 'rb')),
+    "subtropical_forest_lnrr_soc": joblib.load(open('selected_models/best_model_lnRR.SOC_Subtropical_Forest.pkl', 'rb')),
+    "subtropical_non_forest_time": joblib.load(open('selected_models/best_model_Restoration_time_years_Subtropical_Non_Forest.pkl', 'rb')),
+    "subtropical_non_forest_lnrr_soc": joblib.load(open('selected_models/best_model_lnRR.SOC_Subtropical_Non_Forest.pkl', 'rb')),
+    "temperate_forest_time": joblib.load(open('selected_models/best_model_Restoration_time_years_Temperate_Forest.pkl', 'rb')),
+    "temperate_forest_lnrr_soc": joblib.load(open('selected_models/best_model_lnRR.SOC_Temperate_Forest.pkl', 'rb')),
+    "temperate_non_forest_time": joblib.load(open('selected_models/best_model_Restoration_time_years_Temperate_Non_Forest.pkl', 'rb')),
+    "temperate_non_forest_lnrr_soc": joblib.load(open('selected_models/best_model_lnRR.SOC_Temperate_Non_Forest.pkl', 'rb')),
 }
 
 @app.route('/')
