@@ -12,13 +12,13 @@
     <div class="header-container">
         <img src="static/ecorevivetx-high-resolution-logo.png" alt="EcoReviveTX Logo" class="head-logo">
         <h1 class="title">EcoReviveTX: Ecological Restoration Analysis Tool</h1>
-        <p class="introduction">EcoReviveTX provides data-driven tools to support ecological restoration projects across Texas ecosystems. Our platform uses machine learning models and environmental simulations based on research adapted from <a href="https://datadryad.org/stash/dataset/doi:10.5061/dryad.msbcc2g0g" target="_blank">Wang et al. (2020)</a>, which examined soil organic carbon and nutrient dynamics in restoration sites. These tools help predict restoration timelines and model ecosystem responses to environmental conditions, enabling informed decision-making for Texas Parks and Wildlife Department staff, park rangers, and restoration practitioners.</p>
+        <p class="introduction">EcoReviveTX is a comprehensive platform that empowers ecological restoration efforts across Texas through advanced machine learning and environmental simulation tools. Developed in partnership with the <strong>Texas Parks and Wildlife Department</strong>, our platform leverages research from <a href="https://datadryad.org/stash/dataset/doi:10.5061/dryad.msbcc2g0g" target="_blank">Wang et al. (2020)</a>—a study conducted in regions of China with remarkably similar climate patterns, soil composition, and ecosystem characteristics to Texas. By adapting this data to Texas landscapes, we provide park rangers, restoration practitioners, and environmental professionals with powerful predictive tools for estimating restoration timelines and modeling soil carbon dynamics under various environmental conditions. Our mission is to accelerate ecosystem recovery and promote sustainable management of Texas's diverse natural habitats. You can explore the full source code and technical implementation <a href="https://github.com/AnishK05/EcoReviveTX" target="_blank">here</a>.</p>
     </div>
 
     <!-- Prediction Tool -->
     <div class="tool-section">
         <h2>Machine Learning Prediction Tool</h2>
-        <p class="tool-description">Predict restoration outcomes using trained models. This tool can estimate: (1) <strong>Restoration Time</strong> - the number of years required for ecosystem recovery, or (2) <strong>Soil Carbon Response (lnRR.SOC)</strong> - the natural log of the response ratio for soil organic carbon accumulation.</p>
+        <p class="tool-description">Generate site-specific restoration predictions for your land. By inputting the geographic coordinates, climate data, soil characteristics, and ecosystem type of a particular site, this tool estimates: (1) <strong>Restoration Time</strong> - the number of years required for that specific area to achieve ecosystem recovery, or (2) <strong>Soil Carbon Response (lnRR.SOC)</strong> - the expected change in soil organic carbon levels for that location.</p>
         
         <form id="prediction-form">
             <div class="input-row">
@@ -90,7 +90,7 @@
     <!-- Simulation Tool -->
     <div class="tool-section">
         <h2>Environmental Simulation Tool</h2>
-        <p class="tool-description">Run computational simulations to model ecosystem dynamics under different environmental conditions. Choose between: (1) <strong>Basic Ecosystem Model</strong> - deterministic simulation of restoration trajectories, or (2) <strong>Monte Carlo Simulation</strong> - probabilistic modeling with uncertainty quantification across multiple scenarios.</p>
+        <p class="tool-description">Run computational simulations to predict soil organic carbon (SOC) dynamics and model ecosystem restoration trajectories under different environmental conditions. Choose between: (1) <strong>Basic Ecosystem Model</strong> - deterministic simulation providing direct SOC predictions over time, or (2) <strong>Monte Carlo Simulation</strong> - probabilistic modeling that quantifies uncertainty and variability in SOC recovery across multiple scenarios.</p>
         
         <form id="simulation-form">
             <div class="input-row">

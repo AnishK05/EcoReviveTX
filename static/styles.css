@@ -30,7 +30,7 @@ body {
 }
 
 .head-logo {
-    width: 150px; 
+    width: 200px; 
     height: auto;
     margin-bottom: 10px;
 }
@@ -41,11 +41,11 @@ body {
 }
 
 .introduction {
-    font-size: 0.95em;
+    font-size: 1.05em;
     margin-bottom: 10px;
     font-weight: normal;
-    color: #333;
-    line-height: 1.5;
+    color: #222;
+    line-height: 1.6;
 }
 
 a {
@@ -105,8 +105,8 @@ a:hover {
 }
 
 .tool-description {
-    color: #555;
-    font-size: 0.95em;
+    color: #333;
+    font-size: 1em;
     line-height: 1.6;
     margin-bottom: 25px;
 }
