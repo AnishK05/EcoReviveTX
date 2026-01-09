@@ -152,11 +152,21 @@
                 $('#prediction-result').show();
                 $('#prediction-result .result-content').html('<p class="loading">Generating prediction...</p>');
                 
+                // Scroll to results
+                $('html, body').animate({
+                    scrollTop: $("#prediction-result").offset().top - 400
+                }, 500);
+                
                 $.ajax({
                     url: '/predict',
                     type: 'POST',
                     data: $(this).serialize(),
                     success: function(response) {
+                        $('#prediction-result').addClass('highlight');
+                        setTimeout(function() {
+                            $('#prediction-result').removeClass('highlight');
+                        }, 1000);
+
                         if (response.error) {
                             $('#prediction-result .result-content').html('<p class="error">Error: ' + response.error + '</p>');
                         } else {
@@ -175,11 +185,21 @@
                 $('#simulation-result').show();
                 $('#simulation-result .result-content').html('<p class="loading">Running simulation...</p>');
                 
+                // Scroll to results
+                $('html, body').animate({
+                    scrollTop: $("#simulation-result").offset().top - 100
+                }, 500);
+
                 $.ajax({
                     url: '/simulate',
                     type: 'POST',
                     data: $(this).serialize(),
                     success: function(response) {
+                        $('#simulation-result').addClass('highlight');
+                        setTimeout(function() {
+                            $('#simulation-result').removeClass('highlight');
+                        }, 1000);
+
                         if (response.error) {
                             $('#simulation-result .result-content').html('<p class="error">Error: ' + response.error + '</p>');
                         } else {
