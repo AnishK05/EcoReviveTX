@@ -74,7 +74,7 @@ a:hover {
 .input-wrapper {
     flex: 1;
     min-width: 180px;
-    max-width: calc(25% - 15px);
+    max-width: calc(33.33% - 15px);
     display: flex;
     flex-direction: column;
 }

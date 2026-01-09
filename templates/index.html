@@ -149,6 +149,7 @@
             // Handle prediction form submission
             $('#prediction-form').submit(function(event) {
                 event.preventDefault();
+                const predictionType = $('#pred-type').val();
                 $('#prediction-result').show();
                 $('#prediction-result .result-content').html('<p class="loading">Generating prediction...</p>');
                 
@@ -169,6 +170,9 @@
 
                         if (response.error) {
                             $('#prediction-result .result-content').html('<p class="error">Error: ' + response.error + '</p>');
+                        } else if (typeof response.prediction === 'number') {
+                            let unit = predictionType === 'time' ? ' years' : ' lnRR.SOC';
+                            $('#prediction-result .result-content').html('<p class="result-value">' + response.prediction.toFixed(2) + unit + '</p>');
                         } else {
                             $('#prediction-result .result-content').html('<p class="result-value">' + response.prediction + '</p>');
                         }
