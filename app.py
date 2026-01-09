@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, jsonify
 import joblib
-import subprocess
+import random
 import os
 
 app = Flask(__name__)
@@ -61,14 +61,11 @@ def simulate():
 
         if simulation_type:
             if simulation_type == "basic":
-                c_file = 'C_simulations/basic_ecosystem_modeling.c'
+                simulation_result = run_basic_simulation(mat, map_, soil_depth, climate, ecosystem)
             elif simulation_type == "monte_carlo":
-                c_file = 'C_simulations/monte_carlo_ecosystem_modeling.c'
+                simulation_result = run_monte_carlo_simulation(mat, map_, soil_depth, climate, ecosystem)
             else:
                 return jsonify({"error": "Invalid simulation type selected."})
-            
-            # Compile the C file and run the simulation
-            simulation_result = compile_and_run_c_simulation(c_file, mat, map_, soil_depth, climate, ecosystem)
         else:
             simulation_result = "No simulation type selected."
 
@@ -76,36 +73,38 @@ def simulate():
     except Exception as e:
         return jsonify({"error": str(e)})
 
-def compile_and_run_c_simulation(c_file, mat, map_, soil_depth, climate, ecosystem):
-    """Run a pre-compiled C simulation executable with user inputs."""
-    try:
-        # Use the pre-existing .out file
-        executable = c_file.replace('.c', '.out')
-        
-        # Check if the executable exists
-        if not os.path.exists(executable):
-            return f"Error: Simulation executable not found at {executable}"
-        
-        # Convert to absolute path for Windows
-        abs_executable = os.path.abspath(executable)
-        
-        # Run the compiled binary with the provided parameters
-        process = subprocess.Popen(
-            [abs_executable, str(mat), str(map_), str(soil_depth), climate, ecosystem],
-            stdout=subprocess.PIPE, 
-            stderr=subprocess.PIPE,
-            text=True,
-            cwd=os.path.dirname(abs_executable)
-        )
-        stdout, stderr = process.communicate(timeout=30)  # 30 second timeout
+def calculate_soc(mat, map_, soil_depth, climate, ecosystem):
+    """Calculate SOC using the same formula as the C code."""
+    climate_encoded = 1 if climate == "subtropical" else 0
+    ecosystem_encoded = 1 if ecosystem == "forest" else 0
+    
+    # Same formula as in the C code
+    soc = 0.5 - 0.02 * mat + 0.0008 * map_ + 0.03 * soil_depth + 0.2 * climate_encoded + 0.35 * ecosystem_encoded
+    return soc
 
-        if process.returncode != 0:
-            return f"Execution error: {stderr if stderr else 'Unknown error'}"
+def run_basic_simulation(mat, map_, soil_depth, climate, ecosystem):
+    """Run basic deterministic SOC simulation (equivalent to basic_ecosystem_modeling.c)."""
+    try:
+        soc = calculate_soc(mat, map_, soil_depth, climate, ecosystem)
+        return f"Predicted SOC: {soc:.6f}\n"
+    except Exception as e:
+        return f"Simulation error: {str(e)}"
+
+def run_monte_carlo_simulation(mat, map_, soil_depth, climate, ecosystem, iterations=1000):
+    """Run Monte Carlo SOC simulation (equivalent to monte_carlo_ecosystem_modeling.c)."""
+    try:
+        random.seed()  # Initialize random seed
+        soc_sum = 0.0
         
-        return stdout if stdout else "Simulation completed successfully (no output generated)"
-    except subprocess.TimeoutExpired:
-        process.kill()
-        return "Simulation timed out. Please try with different parameters."
+        for i in range(iterations):
+            # Small variation in MAT and MAP (same as C code: rand() % 3 - 1 gives -1, 0, or 1)
+            mat_variation = mat + (random.randint(0, 2) - 1) * 0.1 * mat
+            map_variation = map_ + (random.randint(0, 2) - 1) * 0.1 * map_
+            soc = calculate_soc(mat_variation, map_variation, soil_depth, climate, ecosystem)
+            soc_sum += soc
+        
+        soc_average = soc_sum / iterations
+        return f"Predicted SOC after Monte Carlo simulation: {soc_average:.6f}\n"
     except Exception as e:
         return f"Simulation error: {str(e)}"
 
