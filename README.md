@@ -2,7 +2,9 @@
 
 ## Overview
 
-**EcoReviveTX** is a web application that predicts ecological restoration outcomes for Texas landscapes. The platform uses machine learning models trained on ecological restoration data (adapted from [Wang et al. (2020)](https://datadryad.org/stash/dataset/doi:10.5061/dryad.msbcc2g0g)) to estimate restoration timelines and soil carbon dynamics based on site-specific environmental conditions. Users can input geographic coordinates, climate data, and soil characteristics to predict either (1) restoration time in years, or (2) soil organic carbon response (lnRR.SOC). The application includes C-based ecosystem simulations for scenario analysis. This project is an ongoing partnership with the **Texas Parks and Wildlife Department** to support ecological restoration efforts across the state. Built with Flask (Python), jQuery, and C, with deployment on Vercel.
+**EcoReviveTX** is a web application that predicts ecological restoration outcomes for Texas landscapes. The platform uses machine learning models trained on ecological restoration data (adapted from [Wang et al. (2020)](https://datadryad.org/stash/dataset/doi:10.5061/dryad.msbcc2g0g)) to estimate restoration timelines and soil carbon dynamics based on site-specific environmental conditions. Users can input geographic coordinates, climate data, and soil characteristics to predict either (1) restoration time in years, or (2) soil organic carbon response (lnRR.SOC). The application also includes C-based ecosystem simulations for scenario analysis.
+
+This project is an ongoing partnership with the **Texas Parks and Wildlife Department** to support ecological restoration efforts across the state.
 
 Explore the website [here](https://ecorevive-tx.vercel.app/)
 
