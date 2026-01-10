@@ -22,9 +22,6 @@ Explore the website [here](https://ecorevive-tx.vercel.app/)
 ## Features
 
 * **Machine Learning Prediction Tool:** Eight trained models (4 climate/ecosystem combinations × 2 prediction targets) using Random Forest, Gradient Boosting, Linear Regression, and SVR. The best-performing model for each category was selected based on R² score. Models take latitude, longitude, MAT (°C), MAP (mm), soil depth (cm), ambient SOC (g/kg), climate zone (subtropical/temperate), and ecosystem type (forest/non-forest) as inputs. Outputs restoration time (years) or soil carbon response (lnRR.SOC).
-
 * **C-Based Ecosystem Simulations:** Two simulation methods: (1) Basic deterministic model that calculates SOC using environmental variables, and (2) Monte Carlo simulation (1000 iterations) that introduces randomized variations in MAT and MAP to quantify uncertainty. Both simulations use a formula-based approach to predict SOC dynamics.
-
 * **Data Source:** Models trained on ecological restoration data from Chinese ecosystems with similar climate and soil characteristics to Texas, allowing transferability of restoration patterns to Texas landscapes. Data visualizations and graphs were generated using MATLAB to analyze key environmental trends and patterns.
-
 * **Architecture:** Flask REST API serves predictions and executes C simulation binaries. jQuery handles asynchronous form submissions and dynamic result display. Models are loaded at application startup and served via POST endpoints.
